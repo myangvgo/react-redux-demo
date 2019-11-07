@@ -1,5 +1,6 @@
 import React from 'react';
 import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 import Counter from './Counter';
 import './App.css';
 
@@ -29,9 +30,11 @@ store.dispatch({ type: 'RESET' });
 
 function App() {
     return (
-        <div className='App'>
-            <Counter />
-        </div>
+        <Provider store>
+            <div className='App'>
+                <Counter />
+            </div>
+        </Provider>
     );
 }
 
