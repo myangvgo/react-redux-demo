@@ -2,18 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { increment, decrement } from './actions';
 
-// Add the function
-function mapStateToProps(state) {
-    return { count: state.count };
-}
-
 class Counter extends React.Component {
     increment = () => {
-        this.props.dispatch(increment()); // need to call the action creator function
+        this.props.increment();
     };
 
     decrement = () => {
-        this.props.dispatch(decrement());
+        this.props.decrement();
     };
 
     render() {
@@ -32,4 +27,19 @@ class Counter extends React.Component {
 
 // export default Counter;
 
-export default connect(mapStateToProps)(Counter);
+function mapStateToProps(state) {
+    return { count: state.count };
+}
+
+// in this object, keys become prop names,
+// and values should be action creator functions.
+// They get bound to `dispatch`.
+const mapDispatchToProps = {
+    increment,
+    decrement
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Counter);
