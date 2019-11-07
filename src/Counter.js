@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { INCREMENT, DECREMENT } from './actions';
+import { increment, decrement } from './actions';
 
 // Add the function
 function mapStateToProps(state) {
@@ -8,14 +8,12 @@ function mapStateToProps(state) {
 }
 
 class Counter extends React.Component {
-    // state = { count: 0 };    // remove count from local state
-
     increment = () => {
-        this.props.dispatch({ type: INCREMENT });
+        this.props.dispatch(increment()); // need to call the action creator function
     };
 
     decrement = () => {
-        this.props.dispatch({ type: DECREMENT });
+        this.props.dispatch(decrement());
     };
 
     render() {

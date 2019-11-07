@@ -30,7 +30,7 @@ store.dispatch({ type: 'RESET' });
 
 function App() {
     return (
-        <Provider store>
+        <Provider store={store}>
             <div className='App'>
                 <Counter />
             </div>
