@@ -1,6 +1,7 @@
 import React from 'react';
 import thunk from 'redux-thunk';
 import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import { Provider } from 'react-redux';
 import rootReducer from './rootReducer';
 // import Counter from './Counter';
@@ -35,7 +36,10 @@ store.dispatch({ type: 'RESET' });
 
 */
 
-const rootStore = createStore(rootReducer, applyMiddleware(thunk));
+const rootStore = createStore(
+    rootReducer,
+    composeWithDevTools(applyMiddleware(thunk))
+);
 
 function App() {
     return (
