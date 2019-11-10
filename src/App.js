@@ -1,9 +1,14 @@
 import React from 'react';
-import { createStore } from 'redux';
+import thunk from 'redux-thunk';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import Counter from './Counter';
+import rootReducer from './rootReducer';
+// import Counter from './Counter';
+import ProductList from './ProductList';
 import './App.css';
 
+// counter logic
+/*
 const initialState = {
     count: 0
 };
@@ -22,17 +27,22 @@ function reducer(state = initialState, action) {
     }
 }
 
-const store = createStore(reducer);
+const store = createStore(reducer, applyMiddleware(thunk));
 
 store.dispatch({ type: 'INCREMENT' });
 store.dispatch({ type: 'DECREMENT' });
 store.dispatch({ type: 'RESET' });
 
+*/
+
+const rootStore = createStore(rootReducer, applyMiddleware(thunk));
+
 function App() {
     return (
-        <Provider store={store}>
+        <Provider store={rootStore}>
             <div className='App'>
-                <Counter />
+                {/* <Counter /> */}
+                <ProductList />
             </div>
         </Provider>
     );
